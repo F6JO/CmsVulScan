@@ -19,7 +19,7 @@
 
 * threadpool==1.3.2
 
-### 示例
+### 使用
 
 * pip install -r requirements.txt
 * python CmsVulScan.py -u http://xxx.com
