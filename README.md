@@ -45,3 +45,6 @@
 * <img src="./img/file.png"/>
 * <img src="./img/save.png"/>
 
+## 警告
+***
+### 请勿用于非法用途！否则自行承担一切后果
