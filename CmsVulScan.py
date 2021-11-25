@@ -9,10 +9,8 @@ from CmsPay.merge_pay import generate
 print(banner())
 # 初始化全局变量
 gl._init()
-
 class main():
     def __init__(self,url):
-
         # 初始化url
         url = Url_init(url)
 
@@ -34,15 +32,18 @@ class main():
         gl.set_value('urlpathlist',[])
         gl.set_value('rerelist',[])
         gl.set_value('headers',{'user-agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36'})
-
-
-        print(times()+gl.get_value("color").yel_info()+gl.get_value("color").yellow(" CMS recognition of ")+gl.get_value("color").green(url)+gl.get_value("color").yellow(" in progress"))
+        gl.set_value('ProxyError',1)
+        gl.set_value('ReadTimeout',1)
+        gl.set_value('ConnectTimeout',1)
+        gl.set_value('ConnectionError',1)
+        print(If_one()+times()+gl.get_value("color").yel_info()+gl.get_value("color").yellow(" CMS recognition of ")+gl.get_value("color").green(url)+gl.get_value("color").yellow(" in progress"))
         for i in Payload_Dict.keys():
             Transfer_device({i:Payload_Dict[i]},Clas.color)
         gl.clear()
 
 
 if __name__ == '__main__':
+
     ages = command()
     if ages.gen:
         generate()
@@ -58,4 +59,4 @@ if __name__ == '__main__':
         for i in file.readlines():
             url = i.replace("\n","")
             main(url)
-    print(times()+gl.get_value("color").gre_ok()+gl.get_value("color").green(" CMS recognition is over"))
+    print("\n"+times()+gl.get_value("color").gre_ok()+gl.get_value("color").green(" CMS recognition is over"))

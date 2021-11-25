@@ -2,6 +2,9 @@ import hashlib
 import sys
 import time
 from modules import globalVar as gl
+# from tqdm import tqdm
+
+start = 1
 def col(str,col):
     if col == "green":
         return "\033[1;32;40m{}\033[0m".format(str)
@@ -60,11 +63,74 @@ def proxies_init(str):
             return {"http":daili}
     else:
         return str
+
+
+
+def Error_print(err):
+    if err == "ProxyError":
+        Error = gl.get_value(
+            'color').red_warn() + gl.get_value(
+            'color').red(" Target rejected, please check agent")
+        print("\r", end="")
+        print(" "*30+Error,"* {}".format(col(gl.get_value("ProxyError"),"red")), end="")
+        gl.set_value("ProxyError",gl.get_value("ProxyError")+1)
+        sys.stdout.flush()
+    elif err == "ReadTimeout":
+        Error = gl.get_value(
+            'color').red_warn() + gl.get_value(
+            'color').red(" The response timed out. Try adjusting the -out parameter")
+        print("\r", end="")
+        print(" "*30+Error, "* {}".format(col(gl.get_value("ReadTimeout"), "red")), end="")
+        gl.set_value("ReadTimeout", gl.get_value("ReadTimeout") + 1)
+        sys.stdout.flush()
+    elif err == "ConnectTimeout":
+        Error = gl.get_value(
+            'color').red_warn() + gl.get_value(
+            'color').red(" The response timed out. Try adjusting the -out parameter")
+        print("\r", end="")
+        print(" "*30+Error, "* {}".format(col(gl.get_value("ConnectTimeout"), "red")), end="")
+        gl.set_value("ConnectTimeout", gl.get_value("ConnectTimeout") + 1)
+        sys.stdout.flush()
+    elif err == "ConnectionError":
+        Error = gl.get_value(
+            'color').red_warn() + gl.get_value(
+            'color').red(" Failed to connect to this website")
+        print("\r", end="")
+        print(" "*30+Error, "* {}".format(col(gl.get_value("ConnectionError"), "red")), end="")
+        gl.set_value("ConnectionError", gl.get_value("ConnectionError") + 1)
+        sys.stdout.flush()
+
+
+def progress(mod,ge):
+    global nr, zong
+    if mod == "md5":
+        nr = " MD5: "
+        zong = gl.get_value("MD5_zong")
+    elif mod == "url":
+        nr = " URL: "
+        zong = gl.get_value("URL_zong")
+    elif mod == "re":
+        nr = " RE: "
+        zong = gl.get_value("RE_zong")
+    print("\r", end="")
+    print(times()+ gl.get_value(
+            'color').yel_info()+gl.get_value(
+            'color').yellow(nr + "{}/{} ".format(ge,zong)), end="")
+    sys.stdout.flush()
+
+def If_one():
+    global start
+    if start == 1:
+        start += 1
+        return ""
+    else:
+        return "\n"
 # def Progress_bar(name,geshu):
 #     for i in tqdm(range(geshu), desc=name, ncols=80):
 #         if name == 'md5':
 #             while True:
 #                 if gl.get_value('md5_int'):
+#                     pass
 
 if __name__ == '__main__':
     print(times())
