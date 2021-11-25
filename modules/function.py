@@ -72,7 +72,7 @@ def Error_print(err):
             'color').red_warn() + gl.get_value(
             'color').red(" Target rejected, please check agent")
         print("\r", end="")
-        print(" "*30+Error,"* {}".format(col(gl.get_value("ProxyError"),"red")), end="")
+        print(" "*30+Error,"* {}".format(col(gl.get_value("ProxyError"),"red"))+" "*21, end="")
         gl.set_value("ProxyError",gl.get_value("ProxyError")+1)
         sys.stdout.flush()
     elif err == "ReadTimeout":
@@ -96,7 +96,7 @@ def Error_print(err):
             'color').red_warn() + gl.get_value(
             'color').red(" Failed to connect to this website")
         print("\r", end="")
-        print(" "*30+Error, "* {}".format(col(gl.get_value("ConnectionError"), "red")), end="")
+        print(" "*30+Error, "* {}".format(col(gl.get_value("ConnectionError"), "red"))+" "*23, end="")
         gl.set_value("ConnectionError", gl.get_value("ConnectionError") + 1)
         sys.stdout.flush()
 

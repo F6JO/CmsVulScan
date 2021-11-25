@@ -8,6 +8,10 @@ requests.logging.captureWarnings(True)
 
 
 def md5_start(zidian):
+    gl.get_value('suo').acquire()
+    progress("md5", gl.get_value("md5_int"))
+    gl.set_value("md5_int", gl.get_value("md5_int") + 1)
+    gl.get_value('suo').release()
     url = gl.get_value("url")
     path = Path_init(zidian['url'])
     name = zidian['name']
@@ -52,12 +56,13 @@ def md5_start(zidian):
         gl.get_value('suo').acquire()
         Error_print("ConnectionError")
         gl.get_value('suo').release()
-    gl.get_value('suo').acquire()
-    progress("md5", gl.get_value("md5_int"))
-    gl.set_value("md5_int", gl.get_value("md5_int") + 1)
-    gl.get_value('suo').release()
+
 
 def re_start(zidian):
+    gl.get_value('suo').acquire()
+    progress("re", gl.get_value("re_int"))
+    gl.set_value("re_int", gl.get_value("re_int") + 1)
+    gl.get_value('suo').release()
     url = gl.get_value("url")
     path = Path_init(zidian['url'])
     name = zidian['name']
@@ -99,15 +104,16 @@ def re_start(zidian):
         gl.get_value('suo').acquire()
         Error_print("ConnectionError")
         gl.get_value('suo').release()
-    gl.get_value('suo').acquire()
-    progress("re", gl.get_value("re_int"))
-    gl.set_value("re_int", gl.get_value("re_int") + 1)
-    gl.get_value('suo').release()
+
     # finally:
     #     gl.set_value('re_int',gl.get_value('re_int')+1)
 
 
 def url_start(zidian):
+    gl.get_value('suo').acquire()
+    progress("url", gl.get_value("url_int"))
+    gl.set_value("url_int", gl.get_value("url_int") + 1)
+    gl.get_value('suo').release()
     url = gl.get_value("url")
     path = Path_init(zidian['url'])
     name = zidian['name']
@@ -148,9 +154,6 @@ def url_start(zidian):
         gl.get_value('suo').acquire()
         Error_print("ConnectionError")
         gl.get_value('suo').release()
-    gl.get_value('suo').acquire()
-    progress("url", gl.get_value("url_int"))
-    gl.set_value("url_int", gl.get_value("url_int") + 1)
-    gl.get_value('suo').release()
+
     # finally:
     #     gl.set_value('url_int',gl.get_value('url_int')+1)
