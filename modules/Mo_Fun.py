@@ -19,7 +19,11 @@ class CmsVLmap:
         self.Url = []
     def Pay_init(self):
         for i in self.PayLoads:
-            dic = json.loads(i)
+            try:
+                dic = json.loads(i)
+            except:
+                print(fun.times()+fun.col("[-] Error: ensure that the last line of Dict/test/payload.txt is null to regenerate payloads","red"))
+                exit()
             if dic["md5"] == "" and dic["re"] == "":
                 self.Url.append(dic)
             elif dic["md5"] != "":
