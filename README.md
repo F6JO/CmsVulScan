@@ -1,7 +1,7 @@
 # CmsVulScan
 
 * Cms扫描器，集合了github上大部分payload
-* 17000 +指纹库 json格式 MD5+正则+url匹配
+* 18000 +指纹库 json格式 MD5+正则+url匹配
 * python >=3.5
 * python 线程池
 
