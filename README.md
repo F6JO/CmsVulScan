@@ -1,7 +1,7 @@
 # CmsVulScan
 
 * Cms扫描器，收集了多个github上扫描器指纹
-* ~~18000+~~7000+指纹库 json格式 MD5+正则+url匹配
+* ~~18000~~ 7000+指纹库 json格式 MD5+正则+url匹配
 * python >=3.5
 
 ***
